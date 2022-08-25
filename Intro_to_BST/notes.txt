@@ -1,0 +1,97 @@
+key: The key of the node
+value: The value of the node
+parent: The parent of the node (null if there is none)
+left: A pointer to the node's left child (null if there is none)
+right: A pointer to the node's right child (null if there is none)
+The main operations of a binary search tree data structure are:
+
+insert: Inserts a node as a child of the given parent node
+remove: Removes a node and its children from the binary search tree
+has: Checks if a given node exists
+find: Retrieves a given node
+preOrderTraversal: Traverses the binary search tree by recursively traversing each node followed by its children
+postOrderTraversal: Traverses the binary search tree by recursively traversing each node's children followed by the node
+inOrderTraversal: Traverses the binary search tree by recursively traversing each node's left child, followed by the node, followed by its right child
+
+
+
+
+Binary Search Tree 
+
+A binary search tree is a data structure consisting of a set of ordered linked nodes that represent a hierarchical tree structure. 
+Each node is linked to others via parent-children relationship. 
+Any given node can have at most two children (left and right). 
+The first node in the binary search tree is the root, whereas nodes without any children are the leaves. 
+The binary search tree is organized in such a way that for any given node, all nodes in its left subtree have a key less than itself and all nodes in its right subtree have a key greater than itself.
+
+Binary Search Tree 
+    - Made of nodes, where each node can have at most 2 children 
+    - Each node has a left and right child 
+    - Has a 'rule' for arrangement 
+        - often used for fast searching
+
+Imagine this list of words:
+
+apple, fence, ghost, jackal, just, money,
+mystic, nerd, pencil, zebra
+
+
+             (root node)
+                money
+              /      \
+            jackal   nerd
+            /   \    /   \
+        fence  just mystic pencil 
+          /  \              \
+       apple ghost          zebra
+
+    
+    Everything on the left is less than 'money' in terms of alphabetical order
+        - So everything comes b4 an M in the alphabet 
+
+    Everything on the right side comes after 'money', will be alphabetically lower than that node
+        - applies to different data 
+
+** Anything to the right of any node, any right children will be greater than that top node **
+
+** Anything to the left will be less than **
+
+Implementing BSTs
+Node Class
+
+
+class Node {
+    constructor(val, left=null, right=null) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class BinarySearchTree {
+    constructor(root=null) {
+        this.root = root;
+    }
+}
+
+
+    cost E = new NODE('E');
+    cost A = new NODE('A');
+    cost B = new NODE('B');
+    cost C = new NODE('C');
+    cost D = new NODE('D');
+    cost F = new NODE('F');
+    cost G = new NODE('G');
+
+    E.left = B;
+    E.right = G;
+    B.left = A;
+    B.right = D
+    G.left = F;
+    
+    const tree = new BinarySearchTree();
+
+
+
+
+

@@ -66,6 +66,17 @@ class Node {
         this.left = left;
         this.right = right;
     }
+    find(sought) {
+        let currentNode = this; // call on any nodes
+        while(currentNode) { // while there is a currentNode, check that node
+            if(currentNode.val === sought) return currentNode; // if currentNode is what your are looking for i.e sought, return currentNode
+            if(currentNode.val > sought) { // if currentNode value is less  than what you are looking for, set currentNode to left side
+                currentNode = currentNode.left;
+            } else {
+                currentNode = currentNode.right;
+            }
+        }
+    }
 }
 
 class BinarySearchTree {
@@ -90,6 +101,18 @@ class BinarySearchTree {
     G.left = F;
     
     const tree = new BinarySearchTree();
+
+
+Binary Search Tree runtime 
+    - Every choice you make affects/ reduces the number of options by half! 
+    - For n nodes, we need to search, at most O(log n) nodes. Super great fast runtime * すっごくいい * 
+
+
+Balancing Trees
+* Easy ways to get reasonably balanced trees:
+
+    - shuffle values for tree randomly, and then insert
+    - or sort values, then insert from the middle working out
 
 
 

@@ -46,10 +46,10 @@ mystic, nerd, pencil, zebra
        apple ghost          zebra
 
     
-    Everything on the left is less than 'money' in terms of alphabetical order
+    *** Everything on the left is less than 'money' in terms of alphabetical order
         - So everything comes b4 an M in the alphabet 
 
-    Everything on the right side comes after 'money', will be alphabetically lower than that node
+   *** Everything on the right side comes after 'money', will be alphabetically lower than that node
         - applies to different data 
 
 ** Anything to the right of any node, any right children will be greater than that top node **
@@ -58,6 +58,29 @@ mystic, nerd, pencil, zebra
 
 Implementing BSTs
 Node Class
+
+Traversal (involves recursion)
+
+*In Order Traversal
+    (look below)
+ traverse(node=this.root) {
+       if(node.left) this.traverse(node.left);
+        console.log(node.val);
+        if(node.right) this.traverse(node.left)
+
+*Pre Order Traversal
+traverse(node=this.root) {
+    console.log(node.val);
+    if(node.left) traverse(node.left);
+    if(node.right) traverse(node.right);
+}
+*Post Order Traversal 
+traverse(node=this.root) {
+    if(node.left) traverse(node.left);
+    if(node.right) traverse(node.left);
+    console.log(node.val);
+}
+
 
 
 class Node {
@@ -82,6 +105,11 @@ class Node {
 class BinarySearchTree {
     constructor(root=null) {
         this.root = root;
+    }
+    traverse(node=this.root) {
+       if(node.left) this.traverse(node.left);
+        console.log(node.val);
+        if(node.right) this.traverse(node.left)
     }
 }
 
@@ -113,6 +141,17 @@ Balancing Trees
 
     - shuffle values for tree randomly, and then insert
     - or sort values, then insert from the middle working out
+    - on average, balanced trees are more efficient
+
+* Side Note On Self-Balancing Trees *
+     There are structure/ algorithm pairs for BSTs that can balance themselves:
+        - AVL Trees (invented by Georgy Adelson-Velsky & Evgenii Landis)
+            - Keeps balanced. Simpler algorithm but slightly less efficient 
+        - Red/ Black Trees 
+            - Keeps "reasonably" balanced. More complex algorithm but can be more efficient
+
+
+
 
 
 

@@ -257,8 +257,12 @@ class BinarySearchTree {
 
 
 
-  dfsInOrder() {
-
+  dfsInOrder(node = this.root, arr = []) {
+    if (node.left) this.dfsInOrder(node.left, arr);
+    console.log(node.val);
+    arr.push(node.val);
+    if (node.right) this.dfsInOrder(node.right, arr);
+    return arr;
   }
 
   /** dfsPostOrder(): Traverse the array using post-order DFS.
@@ -271,24 +275,75 @@ class BinarySearchTree {
   // }
 
 
-  dfsPostOrder() {
-
+  dfsPostOrder(node = this.root, arr = []) {
+    if (node.left) this.dfsPostOrder(node.left, arr);
+    if (node.right) this.dfsPostOrder(node.right, arr);
+    console.log(node.val);
+    arr.push(node.val);
+    return arr;
   }
 
-  /** bfs(): Traverse the array using BFS.
-   * Return an array of visited nodes. */
+  /** bfs(): Traverse the array using BFS (aka level order traversal).
+   * Return an array of visited nodes.
+   * 
+   * BFS Steps:
+1. Start from any Node(that is called as root node)
+2. Visit that Node and push into Queue
+3. Explore all adjacent of visited Node in any order and push all into Queue
+4. Once all adjacent pushed into Queue then pick a new vertex
+5. This new vertex will be the first non explored element from the queue
 
-  bfs() {
+ */
 
+  bfs(node = this.root, arr = []) {
+    let queue = [];
+    queue.push(node);
+    while (queue.length) {
+      let currentNode = queue.shift();
+      console.log(currentNode.val);
+      arr.push(currentNode.val);
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+    }
+    return arr;
   }
 
   /** Further Study!
    * remove(val): Removes a node in the BST with the value val.
    * Returns the removed node. */
 
-  remove(val) {
+  // get hasChildren() {
+  //   return !this.root.left && !this.root.right;
+  // }
 
-  }
+  // remove(val, node = this.root) {
+  //   if (!node) return undefined;
+  //   if (val < node.val) {
+  //     node.left = this.remove(val, node.left);
+  //   } else if (val > node.val) {
+  //     node.right = this.remove(val, node.right);
+  //   } else {
+  //     if (!node.left && !node.right) {
+  //       node = null;
+  //       return node;
+  //     }
+  //     if (!node.left) {
+  //       node = node.right;
+  //       return node;
+  //     }
+  //     if (!node.right) {
+  //       node = node.left;
+  //       return node;
+  //     }
+  //     let removeNode = node.right;
+  //     while (removeNode.left) {
+  //       temp = removeNode.left;
+  //     }
+  //     node.val = removeNode.val;
+  //     node.right = this.remove(removeNode.val, node.right);
+  //   }
+  //   return node;
+  // }
 
   /** Further Study!
    * isBalanced(): Returns true if the BST is balanced, false otherwise. */
